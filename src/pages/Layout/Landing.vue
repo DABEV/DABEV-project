@@ -133,7 +133,7 @@
                 ></v-text-field>
                 <v-text-field
                   label="Grado de estudios"
-                  v-model="student.gradoEstudios"
+                  v-model="student.gradoEstudio"
                   outlined
                   prepend-inner-icon="mdi-bookmark-box-multiple"
                 ></v-text-field>
@@ -225,6 +225,19 @@
                   <strong>Código {{ message.estatus }}</strong>
                 </v-alert>
               </div>
+            </div>
+
+            <div>
+              <v-alert
+                v-model="open"
+                type="error"
+                dark
+                transition="scale-transition"
+                dismissible
+              >
+                {{ this.generic.mensaje }}
+                <strong>Código {{ this.generic.estatus }}</strong>
+              </v-alert>
             </div>
           </v-container>
           <div class="py-8"></div>
@@ -405,13 +418,20 @@ export default {
       becas: ["Federal", "Manutencion", "Madres solteras"],
       messagesStudent: [],
       messagesBeca: [],
-      open: true,
+      open: false,
+      generic: {
+        titulo: "Error en el envio",
+        mensaje: "Favor de verificar los datos",
+        estatus: 2005,
+      },
     };
   },
 
   methods: {
     registro() {
-      fetch("http://localhost:8080/estudiante/registrar", {
+      this.student.matricula = this.student.matricula.toUpperCase();
+
+      fetch("http://localhost:8080/api/estudiante/registrar", {
         headers: {
           "Content-Type": "application/json",
         },
@@ -422,13 +442,14 @@ export default {
         .then((alerts) => {
           this.messagesStudent = alerts;
         })
-        .catch((e) => {
-          console.log(e);
+        .catch(() => {
+          this.open = true;
+          this.$router.push("/error500")
         });
     },
 
     registroBeca() {
-      fetch("http://localhost:8080/beca/registrar", {
+      fetch("http://localhost:8080/api/beca/registrar", {
         headers: {
           "Content-Type": "application/json",
         },
@@ -439,9 +460,7 @@ export default {
         .then((alerts) => {
           this.messagesBeca = alerts;
         })
-        .catch((e) => {
-          console.log(e);
-        });
+        .catch(() => {});
     },
   },
 };

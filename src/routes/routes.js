@@ -45,7 +45,7 @@ const routes = [
         ]
       },
       {
-        path: "/",
+        path: "*",
         component: ErrorTwo,
         redirect: "/error404",
         children: [
