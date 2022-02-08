@@ -1,6 +1,6 @@
 <template>
     <v-app>
-            <div class="content centerdos backimage">
+            <div class="content backimage">
                 <div class="md-layout">
                     <div class="md-layout-item md-small-size-100 md-size-80">
                         <login></login>
@@ -27,8 +27,5 @@ export default {
     background-size: cover;
     width: 100%;
     height: 100%;
-}
-.centerdos {
-  padding: 140px;
 }
 </style>

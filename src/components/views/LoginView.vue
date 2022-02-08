@@ -2,7 +2,9 @@
     <div align="center" class="center">
         <v-card elevation="8"> 
             <v-card-text>
-                <img src="@/./assets/images/vue-logo.png">       
+                <v-avatar class="mr-3" color="grey lighten-5" size="60">
+                        <img src="@/./assets/images/vue-logo.png">
+                </v-avatar>       
                 <p>INICIO DE SESIÓN</p>
                 <div class="container">
                     <v-text-field label="Correo electrónico" outlined prepend-inner-icon="mdi-email"></v-text-field>
