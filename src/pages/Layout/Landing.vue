@@ -133,7 +133,7 @@
                 ></v-text-field>
                 <v-text-field
                   label="Grado de estudios"
-                  v-model="student.gradoEstudios"
+                  v-model="student.gradoEstudio"
                   outlined
                   prepend-inner-icon="mdi-bookmark-box-multiple"
                 ></v-text-field>
@@ -411,6 +411,7 @@ export default {
 
   methods: {
     registro() {
+    this.student.matricula = this.student.matricula.toUpperCase();
       fetch("http://localhost:8080/estudiante/registrar", {
         headers: {
           "Content-Type": "application/json",
