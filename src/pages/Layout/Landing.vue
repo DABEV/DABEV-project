@@ -187,6 +187,7 @@
                   v-model="message.open"
                   type="success"
                   dark
+                  dense
                   transition="scale-transition"
                   dismissible
                 >
@@ -336,6 +337,7 @@
                   v-model="message.open"
                   type="success"
                   dark
+                  dense
                   transition="scale-transition"
                   dismissible
                 >
